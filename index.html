@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ramona Evening Crossings</title>
+    <meta name="claude:viewport-fit-sides" content="cover" />
+    <meta name="description" content="Ramona, a 1912 steam launch: evening crossings from the Old Quay to Lighthouse Point. A 3D scroll story with an editorial middle." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wdth,wght@75..100,400..700&display=swap" />
+<link rel="stylesheet" href="app.css?v=a374e26a">
+</head>
+<body class="ramona panel-off">
+<div id="stage">
+      <canvas id="gl" aria-label="Ramona, a steam launch, on an evening sea; the view follows the scroll"></canvas>
+      <div class="status" id="status" aria-label="Loading the boat"></div>
+    </div>
+    <div class="veil" aria-hidden="true"></div>
+
+    <header class="r-head">
+      <nav class="r-nav" aria-label="Sections">
+        <a href="#boat" data-to="boat">On board</a>
+        <a href="#crossings" data-to="crossings">Crossings</a>
+        <a href="#chart" data-to="chart">The route</a>
+      </nav>
+      <a class="r-logo" href="#top" data-to="top" aria-label="Ramona, back to the top">Ramona</a>
+      <nav class="r-nav r-nav-end" aria-label="More">
+        <a href="#night" data-to="night">After dark</a>
+        <a href="#crossings" data-to="crossings" class="r-pill">Book a seat</a>
+      </nav>
+    </header>
+
+    <!-- 3D scene texts: pinned over the canvas, faded in and out with the camera stops -->
+    <div class="scenes">
+      <section class="scene hero" data-c="0" aria-label="Ramona">
+        <h1 class="hero-title">
+          <span class="row row-l"><span class="ln"><span>Evening</span></span></span>
+          <span class="row row-c"><span class="ln"><span><em>steam</em></span></span></span>
+          <span class="row row-r"><span class="ln"><span>crossings.</span></span></span>
+        </h1>
+        <div class="hero-foot">
+          <p class="cap hero-next"><span class="dim">(Next departure)</span><b class="serif-num">18:40</b><span>Old Quay, berth 7</span></p>
+          <div class="hero-copy">
+            <p class="cap">From the Old Quay a 1912 steam launch takes twenty-four people out to Lighthouse Point and back, while the bay turns from gold to violet.</p>
+            <a class="cap link" href="#boat" data-to="boat">See what’s on board</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="scene col col-r" data-c="1">
+        <p class="cap dim">(01) The launch</p>
+        <h2 class="t-md"><span class="ln"><span>Riveted,</span></span><span class="ln"><span>varnished,</span></span><span class="ln"><span><em>unhurried.</em></span></span></h2>
+        <p class="cap">Built for twenty-four passengers. Her bow is fine enough to slip between moored yachts and high enough to keep the spray off the front bench.</p>
+        <dl class="rows">
+          <div><dt>Length</dt><dd><b data-count="9.5" data-dec="1">0</b> m</dd></div>
+          <div><dt>Beam</dt><dd><b data-count="2.3" data-dec="1">0</b> m</dd></div>
+          <div><dt>Draught</dt><dd><b data-count="0.56" data-dec="2">0</b> m</dd></div>
+          <div><dt>Built</dt><dd><b data-count="1912" data-dec="0">0</b></dd></div>
+        </dl>
+      </section>
+
+      <section class="scene col col-l" data-c="2">
+        <p class="cap dim">(02) The waterline</p>
+        <h2 class="t-md"><span class="ln"><span>Ramona red,</span></span><span class="ln"><span>below the</span></span><span class="ln"><span><em>rubbing strake.</em></span></span></h2>
+        <p class="cap">The hull still wears the oxblood she was launched in. Above it, three coats of white. Below it, the dark band the water keeps for itself.</p>
+        <ul class="chips" aria-label="Hull colours">
+          <li style="--c: #8c2826"><i></i>Ramona red</li>
+          <li style="--c: #efe9dc"><i></i>Deck white</li>
+          <li style="--c: #1e1c1b"><i></i>Funnel black</li>
+        </ul>
+      </section>
+
+      <section class="scene col col-l" data-c="3">
+        <p class="cap dim">(08) Casting off</p>
+        <h2 class="t-md"><span class="ln"><span>Steam up.</span></span><span class="ln"><span><em>Lines in.</em></span></span></h2>
+        <p class="cap">The boiler takes forty minutes to raise steam. She leaves the quay at walking pace and settles at seven knots.</p>
+        <figure class="telegraph" aria-label="Engine order telegraph">
+          <svg viewBox="0 0 260 150">
+            <path class="t-face" d="M20 130 A110 110 0 0 1 240 130 Z" />
+            <g class="t-sectors"></g>
+            <g class="t-needle"><path d="M130 130 L130 36" /><circle cx="130" cy="130" r="9" /></g>
+          </svg>
+          <figcaption class="cap"><b data-order>Stop</b><span><b data-kn-big>0.0</b> kn</span><span><b data-rpm>0</b> rpm</span></figcaption>
+        </figure>
+      </section>
+
+      <section class="scene col col-r" data-c="4" id="night-text">
+        <p class="cap dim">(09) After dark</p>
+        <h2 class="t-md"><span class="ln"><span>The lighthouse</span></span><span class="ln"><span><em>takes the watch.</em></span></span></h2>
+        <p class="cap">Past eight the lamps come on, the light on the point sweeps once every twelve seconds, and the water keeps every light twice.</p>
+        <dl class="rows rows-3">
+          <div><dt>20:02</dt><dd>Lamps lit, all forty-two</dd></div>
+          <div><dt>20:07</dt><dd>Light on the point, 12 s sweep</dd></div>
+          <div><dt>20:15</dt><dd>Buoy 3 abeam, flashing green</dd></div>
+        </dl>
+      </section>
+
+      <section class="scene finale" data-c="5">
+        <p class="cap finale-kicker"><span class="dim">(10) Come aboard</span><span>Tue – Sun, May to September</span></p>
+        <h2 class="finale-title"><span class="ln"><span>Cast off</span></span><span class="ln"><span><em>at dusk.</em></span></span></h2>
+        <footer class="r-foot">
+          <div><p class="cap dim">Stay on the list</p><a class="cap link" href="#top" data-to="top">New season dates by post</a></div>
+          <div><p class="cap dim">Boarding</p><p class="cap">Old Quay, berth 7 · Kiosk from six</p></div>
+          <div><p class="cap dim">Follow</p><p class="cap"><a class="link" href="#top" data-to="top">Instagram</a> <a class="link" href="#top" data-to="top">Facebook</a></p></div>
+          <div><p class="cap dim">© Ramona crossings 2026</p><p class="cap">A fictional crossing · Boat model by Lucas Soler, CC BY 4.0</p></div>
+        </footer>
+      </section>
+    </div>
+
+    <aside class="hud" aria-label="Ship's instruments">
+      <div class="hud-log cap">
+        <p><span data-lat>43°17′15″N</span><span data-lon>5°21′32″E</span></p>
+        <p><span class="dim">Hdg</span><b data-hdg>149°</b><span class="dim">Spd</span><b data-kn>0.0 kn</b><span class="dim">Local</span><b data-clock>18:40</b></p>
+      </div>
+      <figure class="compass" aria-label="Compass">
+        <svg viewBox="-60 -60 120 120">
+          <circle r="57" class="c-ring" />
+          <g class="c-card">
+            <g class="c-ticks"></g>
+            <path class="c-star" d="M0 -40 L6 -6 L40 0 L6 6 L0 40 L-6 6 L-40 0 L-6 -6 Z" />
+            <path class="c-north" d="M0 -40 L6 -6 L0 0 L-6 -6 Z" />
+            <text y="-44" class="c-n">N</text><text x="47" y="4">E</text><text y="51">S</text><text x="-47" y="4">W</text>
+          </g>
+          <g class="c-wind"><path d="M0 -22 L0 14 M-5 -14 L0 -22 L5 -14" /></g>
+          <path class="c-lubber" d="M0 -60 L-4 -52 L4 -52 Z" />
+        </svg>
+        <figcaption class="cap"><span class="dim">Wind</span> <b data-wind>NE</b></figcaption>
+      </figure>
+      <div class="hud-tools">
+        <button type="button" id="open-panel" title="Scene settings (H)" aria-label="Scene settings">⚙</button>
+        <button type="button" id="open-credits" title="Credits" aria-label="Credits">i</button>
+      </div>
+    </aside>
+
+    <!-- scroll room for the first three camera stops -->
+    <div class="act act-1" id="top" aria-hidden="true"></div>
+
+    <!-- the editorial middle: an opaque sheet that rises over the 3D -->
+    <main class="board" id="board">
+      <section class="b-intro">
+        <p class="cap dim center" data-reveal>(03) The slow way</p>
+        <h2 class="t-lg center scrub">We still cross <img class="plate inline" data-plate="bow" alt="Ramona's bow in the evening light" /> the bay the <img class="plate inline" data-plate="stern" alt="Ramona under way, seen from astern" /> slow way, by steam.</h2>
+        <div class="b-intro-copy center" data-reveal>
+          <p class="cap">No diesel. No hurry.</p>
+          <p class="cap">In a harbour of outboards and water taxis, we choose the long way round. A coal fire, a brass whistle and a crossing that takes as long as it takes, which is ninety minutes, there and back.</p>
+        </div>
+      </section>
+
+      <section class="b-watch">
+        <div class="b-watch-pin">
+          <svg class="rose" viewBox="-200 -200 400 400" aria-hidden="true"><g class="rose-card"></g></svg>
+          <h2 class="t-md center narrow"><span>A good</span> <span>crossing</span> <span>is mostly</span> <span>patience,</span> <span>and a little</span> <span><em>coal.</em></span></h2>
+        </div>
+        <p class="cap b-note n1" data-reveal><span class="dim">(Wind)</span> North-west, most evenings. It drops at sunset and the bay goes flat as a plate.</p>
+        <p class="cap b-note n2" data-reveal><span class="dim">(Speed)</span> Seven knots, never more. The wake stays small enough to rock the moored dinghies, not to swamp them.</p>
+        <p class="cap b-note n3" data-reveal><span class="dim">(Seats)</span> Twenty-four, on teak benches. Nobody stands, and nobody is more than two metres from the rail.</p>
+      </section>
+
+      <section class="b-exp" id="boat">
+        <header class="b-exp-head">
+          <p class="cap dim" data-reveal>(04) On board</p>
+          <h2 class="t-lg"><span class="ln"><span>Ninety minutes,</span></span><span class="ln"><span>six ways to</span></span><span class="ln"><span><em>spend them.</em></span></span></h2>
+        </header>
+        <div class="b-exp-grid">
+          <div class="exp-pin">
+            <figure class="exp-frame">
+              <img class="exp-img" data-img="exp-stoker" alt="The stoker opens the firebox for a child and their mother" />
+              <img class="exp-img" data-img="exp-porthole" alt="The bronze propeller seen through the brass porthole" />
+              <img class="exp-img" data-img="exp-dolphins" alt="Passengers at the rail pointing at dolphins beside the hull" />
+              <img class="exp-img" data-img="exp-stars" alt="The skipper showing a guest the stars through a brass telescope" />
+              <img class="exp-img" data-img="exp-photo" alt="An instant photograph held up against the dusk" />
+              <img class="exp-img" data-img="exp-charter" alt="A wedding party raising glasses under the canopy lights" />
+            </figure>
+            <p class="cap exp-count"><b data-exp-n>01</b><span class="dim"> / 06</span></p>
+          </div>
+          <ol class="exp-list">
+            <li class="exp">
+              <p class="cap dim">01</p>
+              <h3 class="t-md">The stoker’s tour</h3>
+              <p class="cap">Five minutes below with the stoker: the firebox, the gauges, the whistle cord. Children may ring the bell as she leaves the quay.</p>
+              <dl class="exp-meta cap"><div><dt>When</dt><dd>Every crossing</dd></div><div><dt>Price</dt><dd>Free</dd></div></dl>
+            </li>
+            <li class="exp">
+              <p class="cap dim">02</p>
+              <h3 class="t-md">Porthole hour</h3>
+              <p class="cap">A low bench and a brass porthole below the waterline. Watch the bronze screw turn and the bubbles run astern.</p>
+              <dl class="exp-meta cap"><div><dt>When</dt><dd>Every crossing</dd></div><div><dt>Price</dt><dd>Free</dd></div></dl>
+            </li>
+            <li class="exp">
+              <p class="cap dim">03</p>
+              <h3 class="t-md">Dolphin watch</h3>
+              <p class="cap">On calm evenings a pod follows the wake past Buoy 3. The deckhand calls them out; nobody has been disappointed since July.</p>
+              <dl class="exp-meta cap"><div><dt>When</dt><dd>Evening crossing</dd></div><div><dt>Season</dt><dd>June to September</dd></div></dl>
+            </li>
+            <li class="exp">
+              <p class="cap dim">04</p>
+              <h3 class="t-md">Stars with the skipper</h3>
+              <p class="cap">Engine to slow off Lighthouse Point, lamps dimmed for ten minutes, and a 1930s brass telescope on the foredeck.</p>
+              <dl class="exp-meta cap"><div><dt>When</dt><dd>Lantern crossing</dd></div><div><dt>Price</dt><dd>Free</dd></div></dl>
+            </li>
+            <li class="exp">
+              <p class="cap dim">05</p>
+              <h3 class="t-md">The keepsake</h3>
+              <p class="cap">The deckhand takes one instant photograph of every party aboard. It develops before you are back alongside.</p>
+              <dl class="exp-meta cap"><div><dt>When</dt><dd>Every crossing</dd></div><div><dt>Price</dt><dd>Included</dd></div></dl>
+            </li>
+            <li class="exp">
+              <p class="cap dim">06</p>
+              <h3 class="t-md">The whole boat</h3>
+              <p class="cap">Weddings, birthdays, a proposal at the point. Twenty-four guests, your own route and the lamps lit early.</p>
+              <dl class="exp-meta cap"><div><dt>When</dt><dd>Mon, or after 21:00</dd></div><div><dt>Price</dt><dd>On request</dd></div></dl>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="b-crossings" id="crossings">
+        <header class="b-head" data-reveal>
+          <h2 class="t-md">(05) The crossings</h2>
+          <p class="t-md dim-ink">Three a night. Pick the light, we pour the rest.</p>
+        </header>
+        <div class="tiles">
+          <article class="tile" data-reveal>
+            <img class="plate" data-img="svc-aperitivo" alt="Aperitivo served on deck at golden hour" />
+            <h3><span class="tile-name">Aperitivo</span><span class="tile-time">18:40</span></h3>
+            <dl class="rows">
+              <div><dt>On board</dt><dd>Spritz, olives, the quay turning gold</dd></div>
+              <div><dt>Crossing</dt><dd>Evening, back at 20:10</dd></div>
+              <div><dt>Runs</dt><dd>Tue – Sun, May to September</dd></div>
+              <div><dt>Fare</dt><dd>Adults 24 · Children 12</dd></div>
+            </dl>
+            <a class="r-pill" href="#crossings">Book the 18:40</a>
+          </article>
+          <article class="tile" data-reveal>
+            <img class="plate" data-img="svc-supper" alt="Supper at the bow with a string trio at blue hour" />
+            <h3><span class="tile-name">Supper</span><span class="tile-time">19:30</span></h3>
+            <dl class="rows">
+              <div><dt>On board</dt><dd>Three courses and a string trio</dd></div>
+              <div><dt>Crossing</dt><dd>Late, back at 21:00</dd></div>
+              <div><dt>Runs</dt><dd>Thu – Sun, June to September</dd></div>
+              <div><dt>Fare</dt><dd>58 per guest, supper included</dd></div>
+            </dl>
+            <a class="r-pill" href="#crossings">Book the 19:30</a>
+          </article>
+          <article class="tile" data-reveal>
+            <img class="plate" data-img="svc-bar" alt="The lantern bar at night, guests under blankets" />
+            <h3><span class="tile-name">Lantern bar</span><span class="tile-time">20:20</span></h3>
+            <dl class="rows">
+              <div><dt>On board</dt><dd>Night bar, wool blankets, stars</dd></div>
+              <div><dt>Crossing</dt><dd>Lantern, back at 21:50</dd></div>
+              <div><dt>Runs</dt><dd>Fri – Sat, July and August</dd></div>
+              <div><dt>Fare</dt><dd>Adults 28 · drinks from 9</dd></div>
+            </dl>
+            <a class="r-pill" href="#crossings">Book the 20:20</a>
+          </article>
+        </div>
+      </section>
+
+      <section class="b-route" id="chart">
+        <div class="route-pin">
+          <canvas class="route-gl" aria-label="A chart on a desk; a small Ramona sails the evening route as you scroll"></canvas>
+          <header class="route-head">
+            <p class="cap">(06) The route</p>
+            <h2 class="t-lg">Old Quay to <em>Lighthouse Point.</em></h2>
+            <p class="cap route-sub">6.4 nautical miles, there and back. Whatever her speed, the wake opens behind her at 19.47°.</p>
+          </header>
+          <article class="route-card" aria-live="polite">
+            <p class="cap"><b data-r-n>01</b><span class="dim"> / 05</span><span class="route-time" data-r-time>18:40</span></p>
+            <h3 class="route-name" data-r-name>Old Quay</h3>
+            <p class="cap" data-r-text>Berth 7. Lines in, one long whistle, walking pace past the moored yachts.</p>
+          </article>
+          <p class="route-progress cap"><span class="dim">Leg</span><b data-r-leg>01</b><span class="dim">/ 05</span><i class="route-bar"><i></i></i></p>
+        </div>
+      </section>
+
+      <section class="b-company">
+        <img class="plate float p1" data-img="mood-bow" data-speed="0.18" alt="A passenger laughing at the bow as the coast opens up" />
+        <img class="plate float p2" data-img="mood-lighthouse" data-speed="-0.12" alt="A couple at the stern pointing at the lighthouse" />
+        <img class="plate float p3" data-img="mood-porthole" data-speed="0.26" alt="A child looking through the porthole" />
+        <img class="plate float p4" data-img="mood-blanket" data-speed="-0.2" alt="An older couple under a blanket beneath the lamps" />
+        <h2 class="t-giant center"><span class="ln"><span>Lights</span></span><span class="ln"><span>on the</span></span><span class="ln"><span><em>water</em></span></span></h2>
+        <p class="serif-lede center" data-reveal>A small crew, a few regulars, and whoever the evening brings aboard.</p>
+        <p class="cap center b-company-cap" data-reveal>Skipper, stoker, a deckhand who knows every buoy by name, and a kettle that has never been allowed to go cold.</p>
+      </section>
+
+      <section class="b-trace">
+        <h2 class="t-giant b-trace-title" data-reveal><span class="ln"><span>Leave</span></span><span class="ln"><span>only a</span></span><span class="ln"><span><em>wake.</em></span></span></h2>
+        <p class="cap b-trace-copy" data-reveal>She burns seasoned beech offcuts from the boatyard next door. The ash goes to the gardens on the quay, the bilge is pumped ashore, and the only thing she leaves on the bay is a V of white water that closes behind her in a minute.</p>
+        <dl class="b-trace-facts">
+          <div data-reveal><dt class="cap dim">Diesel per crossing</dt><dd><span class="t-num">0</span><span class="cap">litres</span></dd></div>
+          <div data-reveal><dt class="cap dim">Beech offcuts burned</dt><dd><span class="t-num">38</span><span class="cap">kg a night</span></dd></div>
+          <div data-reveal><dt class="cap dim">Ash back to the quay gardens</dt><dd><span class="t-num">100</span><span class="cap">per cent</span></dd></div>
+          <div data-reveal><dt class="cap dim">Wake gone from the bay</dt><dd><span class="t-num">60</span><span class="cap">seconds</span></dd></div>
+        </dl>
+      </section>
+
+      <section class="b-porthole" id="night">
+        <div class="b-porthole-pin">
+          <svg class="porthole-ring" viewBox="-100 -100 200 200" aria-hidden="true">
+            <circle r="96" class="ring-outer" /><circle r="88" class="ring-inner" /><g class="rivets"></g>
+          </svg>
+          <p class="cap dim ph-cap">(07) Through the porthole</p>
+          <p class="t-md ph-l">She is</p>
+          <p class="t-md ph-r"><em>under way.</em></p>
+        </div>
+      </section>
+    </main>
+
+    <!-- scroll room for the last three camera stops -->
+    <div class="act act-2" aria-hidden="true"></div>
+
+    <aside id="panel" class="surface">
+      <header id="panel-head"></header>
+      <div id="panel-body"></div>
+      <footer id="panel-foot"></footer>
+    </aside>
+    <div id="credits" hidden>
+      <p>Boat: “Ramona Steam boat” by <a href="https://sketchfab.com/3d-models/ramona-steam-boat-040005360e65424eb8095e3ca400ed83" target="_blank" rel="noreferrer">Lucas Soler</a>, CC BY 4.0. Sea modelled after “Sea part” by <a href="https://sketchfab.com/3d-models/sea-part-e90b3547e64a4bbd825fd126760f1770" target="_blank" rel="noreferrer">Ayberk Tosunoglu</a>, CC BY 4.0.</p>
+      <p>Water, sky, scenery and interface written for this page in Three.js. The small inline photographs are rendered from the same scene; the passenger and on-board photographs were generated with Magnific (Nano Banana Pro). The crossing, timetable and fares are fictional.</p>
+      <p>H opens the scene settings · F frees the camera.</p>
+    </div>
+<script type="module" src="app.js?v=d26085d6"></script>
+</body>
+</html>
