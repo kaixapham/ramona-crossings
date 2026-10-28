@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wdth,wght@75..100,400..700&display=swap" />
-<link rel="stylesheet" href="app.css?v=2a4c9b23">
+<link rel="stylesheet" href="app.css?v=230a448f">
 </head>
 <body class="ramona panel-off">
 <div id="stage">
@@ -17,6 +17,12 @@
       <div class="status" id="status" aria-label="Loading the boat"></div>
     </div>
     <div class="veil" aria-hidden="true"></div>
+    <div class="r-loader" role="status" aria-live="polite">
+      <p class="r-loader-logo">Ramona</p>
+      <p class="cap r-loader-line"><span class="dim">Raising steam</span><b><span data-load>0</span>%</b></p>
+      <i class="r-loader-bar"><i></i></i>
+      <p class="cap r-loader-error">The boat could not be loaded. <a href="" class="link">Reload the page</a></p>
+    </div>
 
     <header class="r-head">
       <nav class="r-nav" aria-label="Sections">
@@ -316,6 +322,6 @@
       <p>Water, sky, scenery and interface written for this page in Three.js. The small inline photographs are rendered from the same scene; the passenger and on-board photographs were generated with Magnific (Nano Banana Pro). The crossing, timetable and fares are fictional.</p>
       <p>H opens the scene settings · F frees the camera.</p>
     </div>
-<script type="module" src="app.js?v=ac7a4174"></script>
+<script type="module" src="app.js?v=0a12360c"></script>
 </body>
 </html>
