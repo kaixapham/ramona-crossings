@@ -8,8 +8,8 @@
     <meta name="description" content="Ramona, a 1912 steam launch: evening crossings from the Old Quay to Lighthouse Point. A 3D scroll story with an editorial middle." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wdth,wght@75..100,400..700&display=swap" />
-<link rel="stylesheet" href="app.css?v=230a448f">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wdth,wght@75..100,400..700&family=Funnel+Sans:wght@300;600&family=Newsreader:opsz,wght@6..72,200&display=swap" />
+<link rel="stylesheet" href="app.css?v=5fa93d4a">
 </head>
 <body class="ramona panel-off">
 <div id="stage">
@@ -24,34 +24,37 @@
       <p class="cap r-loader-error">The boat could not be loaded. <a href="" class="link">Reload the page</a></p>
     </div>
 
+    <!-- header after the Figma layout "Tàu Ngọc Trai Thâm" (node 3:2): starburst mark, coordinates, Find the way, menu -->
     <header class="r-head">
-      <nav class="r-nav" aria-label="Sections">
+      <a class="r-mark" href="#top" data-to="top" aria-label="Lumen Yacht, back to the top">
+        <img class="r-mark-bottom" alt="" data-brand="logo-bottom" />
+        <img class="r-mark-left" alt="" data-brand="logo-left" />
+        <img class="r-mark-top" alt="" data-brand="logo-top" />
+        <img class="r-mark-right" alt="" data-brand="logo-right" />
+      </a>
+      <ul class="r-coords"><li>21°01′42″B 105°51′12″Đ</li></ul>
+      <a class="r-find" href="#chart" data-to="chart">Find the way</a>
+      <button class="r-menu" type="button" aria-label="Menu" aria-expanded="false" aria-controls="r-menu"></button>
+      <nav class="r-menu-panel" id="r-menu" aria-label="Sections" hidden>
         <a href="#boat" data-to="boat">On board</a>
         <a href="#crossings" data-to="crossings">Crossings</a>
         <a href="#chart" data-to="chart">The route</a>
-      </nav>
-      <a class="r-logo" href="#top" data-to="top" aria-label="Ramona, back to the top">Ramona</a>
-      <nav class="r-nav r-nav-end" aria-label="More">
         <a href="#night" data-to="night">After dark</a>
-        <a href="#crossings" data-to="crossings" class="r-pill">Book a seat</a>
+        <a href="#crossings" data-to="crossings">Book a seat</a>
       </nav>
     </header>
 
     <!-- 3D scene texts: pinned over the canvas, faded in and out with the camera stops -->
     <div class="scenes">
-      <section class="scene hero" data-c="0" aria-label="Ramona">
+      <!-- first screen after the Figma layout (node 3:2): two display titles on a hairline over the boat -->
+      <section class="scene hero" data-c="0" aria-label="Lumen Yatch CB29">
+        <div class="hero-fade" aria-hidden="true"></div>
         <h1 class="hero-title">
-          <span class="row row-l"><span class="ln"><span>Evening</span></span></span>
-          <span class="row row-c"><span class="ln"><span><em>steam</em></span></span></span>
-          <span class="row row-r"><span class="ln"><span>crossings.</span></span></span>
+          <span class="hero-t"><span class="ln"><span>CB29</span></span></span>
+          <span class="hero-t hero-t-r"><span class="ln"><span>Lumen Yatch</span></span></span>
         </h1>
-        <div class="hero-foot">
-          <p class="cap hero-next"><span class="dim">(Next departure)</span><b class="serif-num">18:40</b><span>Old Quay, berth 7</span></p>
-          <div class="hero-copy">
-            <p class="cap">From the Old Quay a 1912 steam launch takes twenty-four people out to Lighthouse Point and back, while the bay turns from gold to violet.</p>
-            <a class="cap link" href="#boat" data-to="boat">See what’s on board</a>
-          </div>
-        </div>
+        <hr class="hero-rule" />
+        <p class="hero-cap">dsfsdf</p>
       </section>
 
       <section class="scene col col-r" data-c="1">
@@ -109,7 +112,7 @@
           <div><p class="cap dim">Stay on the list</p><a class="cap link" href="#top" data-to="top">New season dates by post</a></div>
           <div><p class="cap dim">Boarding</p><p class="cap">Old Quay, berth 7 · Kiosk from six</p></div>
           <div><p class="cap dim">Follow</p><p class="cap"><a class="link" href="#top" data-to="top">Instagram</a> <a class="link" href="#top" data-to="top">Facebook</a></p></div>
-          <div><p class="cap dim">© Ramona crossings 2026</p><p class="cap">A fictional crossing · Boat model by Lucas Soler, CC BY 4.0</p></div>
+          <div><p class="cap dim">© Ramona crossings 2026</p><p class="cap">A fictional crossing · Catamaran modelled for this page, some fittings from “Frickie's yacht” by dannzjs, CC BY 4.0</p></div>
         </footer>
       </section>
     </div>
@@ -318,10 +321,10 @@
       <footer id="panel-foot"></footer>
     </aside>
     <div id="credits" hidden>
-      <p>Boat: “Ramona Steam boat” by <a href="https://sketchfab.com/3d-models/ramona-steam-boat-040005360e65424eb8095e3ca400ed83" target="_blank" rel="noreferrer">Lucas Soler</a>, CC BY 4.0. Sea modelled after “Sea part” by <a href="https://sketchfab.com/3d-models/sea-part-e90b3547e64a4bbd825fd126760f1770" target="_blank" rel="noreferrer">Ayberk Tosunoglu</a>, CC BY 4.0. Whale: “Humpback Whale” by <a href="https://sketchfab.com/3d-models/humpback-whale-7984cdf86d6946ca8e13f94a5ad5b33c" target="_blank" rel="noreferrer">Bohdan Lvov</a>, CC BY 4.0. Islands: “Madeira, Portugal” terrain by <a href="https://sketchfab.com/3d-models/madeira-portugal-37cce2f26fe14863b59014fa6f62b289" target="_blank" rel="noreferrer">CMPLab</a>, CC BY 4.0. Gulls: “Seagulls animated” by <a href="https://sketchfab.com/3d-models/seagulls-animated-73aed843190a4dfda55f2b65cc0f8d63" target="_blank" rel="noreferrer">vicente betoret ferrero</a>, CC BY 4.0.</p>
+      <p>Boat: a sailing catamaran modelled for this page; its loungers, tables, sofas, stools, bollards, radomes, teak and navy upholstery come from “Frickie's yacht” by <a href="https://sketchfab.com/3d-models/frickies-yacht-1afd320662384bc0910f1778e9cb5eae" target="_blank" rel="noreferrer">dannzjs</a>, CC BY 4.0. Sea modelled after “Sea part” by <a href="https://sketchfab.com/3d-models/sea-part-e90b3547e64a4bbd825fd126760f1770" target="_blank" rel="noreferrer">Ayberk Tosunoglu</a>, CC BY 4.0. Whale: “Humpback Whale” by <a href="https://sketchfab.com/3d-models/humpback-whale-7984cdf86d6946ca8e13f94a5ad5b33c" target="_blank" rel="noreferrer">Bohdan Lvov</a>, CC BY 4.0. Islands: “Madeira, Portugal” terrain by <a href="https://sketchfab.com/3d-models/madeira-portugal-37cce2f26fe14863b59014fa6f62b289" target="_blank" rel="noreferrer">CMPLab</a>, CC BY 4.0. Gulls: “Seagulls animated” by <a href="https://sketchfab.com/3d-models/seagulls-animated-73aed843190a4dfda55f2b65cc0f8d63" target="_blank" rel="noreferrer">vicente betoret ferrero</a>, CC BY 4.0. City on the far coast: “City” by <a href="https://sketchfab.com/3d-models/city-1f50f0d6ec5a493d8e91d7db1106b324" target="_blank" rel="noreferrer">Mateusz Woliński</a>, CC BY 4.0.</p>
       <p>Water, sky, scenery and interface written for this page in Three.js. The small inline photographs are rendered from the same scene; the passenger and on-board photographs were generated with Magnific (Nano Banana Pro). The crossing, timetable and fares are fictional.</p>
       <p>H opens the scene settings · F frees the camera.</p>
     </div>
-<script type="module" src="app.js?v=fab01d33"></script>
+<script type="module" src="app.js?v=6f22bae2"></script>
 </body>
 </html>
